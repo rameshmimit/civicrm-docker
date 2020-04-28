@@ -2,15 +2,15 @@ version: "3"
 services:
   civicrm:
     image: michaelmcandrew/civicrm:5.24.5-drupal-php7.3 # Add own custom image
-    hostname: 54.146.178.80
+    hostname: testhostname
     links:
       - mysql  
     ports:
       - "80:80"
     environment:
       - PROJECT_NAME=civicrmtestproject
-      - BASE_URL=http://54.146.178.80
-      - CIVICRM_DB_NAME=drupal
+      - BASE_URL=http://testhostname.com
+      - CIVICRM_DB_NAME=civicrm
       - CIVICRM_DB_USER=root
       - CIVICRM_DB_PASS
       - CIVICRM_DB_HOST=mysql
@@ -35,7 +35,7 @@ services:
   mysql:
     image: mysql:5.6
     environment:
-      MYSQL_ROOT_PASSWORD: IamG0ing
+      MYSQL_ROOT_PASSWORD: placeHolderPass
     volumes:
       - mysql:/var/lib/mysql
     restart: unless-stopped
